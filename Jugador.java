@@ -1,4 +1,6 @@
-public class Jugador{
+import java.io.Serializable;
+
+public class Jugador implements Serializable{
     String nombre;
     int saldo;
     int puntos;
