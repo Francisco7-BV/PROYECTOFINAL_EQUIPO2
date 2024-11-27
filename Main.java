@@ -39,7 +39,7 @@ public class Main {
                 case 1:
 
 		         if (jugadoresRegistrados >= 100) {
-            System.out.println("No se pueden registrar más jugadores. El límite ha sido alcanzado.");
+            System.out.println("No se pueden registrar más de 100 jugadores");
             return;
         }
 
