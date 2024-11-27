@@ -94,7 +94,7 @@ public class Main {
 					recursos1 = true;                                                                                                               
                                             System.out.println("Jugador 1 encontrado");                                                                                        
                                     } else {                                                                                                                  
-                                System.out.println("Pero, el jugador 1 no tiene saldo suficiente");                                                                               
+                                System.out.println("Jugador encontrado,pero el jugador 1 no tiene saldo suficiente");                                                                               
                             }                                                                                                                                                   
                                           } else {                                                                                                                                  
                                 }                                               
@@ -110,7 +110,7 @@ public class Main {
                                             System.out.println("Jugador 2 encontrado");
 
                                     } else {
-                                System.out.println("Pero, el jugador 2 no tiene saldo suficiente");
+                                System.out.println("Jugador encontrado, pero el jugador 2 no tiene saldo suficiente");
                             }
                                           } else {
                                 }
@@ -168,7 +168,7 @@ public class Main {
 					     System.out.println("Jugador encontrado");
 					    
                                     } else {
-                                System.out.println("Pero, el jugador no tiene saldo suficiente");
+                                System.out.println("Jugador encontrado, pero el jugador no tiene saldo suficiente");
                             }
 				} else {
 				}
