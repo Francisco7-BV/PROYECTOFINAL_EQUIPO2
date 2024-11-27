@@ -90,7 +90,7 @@ public class Main {
                                 if (jugadores[i].obtenerNombre().equals(nombreConecta1)){
 				    jugadorConecta1 = jugadores[i];
 				    encontrado1 = true;
-				    if (jugadorConecta1.obtenerSaldo() > 15){
+				    if (jugadorConecta1.obtenerSaldo() >= 15){
 					recursos1 = true;                                                                                                               
                                             System.out.println("Jugador 1 encontrado");                                                                                        
                                     } else {                                                                                                                  
