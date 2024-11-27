@@ -109,16 +109,7 @@ public class Main {
 	    case 4:
 
 		//VER MEJORES 3 JUGADORES
-
-		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("jugadores.txt"))) {
-    Jugador jugador = (Jugador) ois.readObject();
-    System.out.println("Nombre: " + jugador.obtenerNombre());
-    System.out.println("Puntos: " + jugador.obtenerPuntos());
-    System.out.println("Saldo: " + jugador.obtenerSaldo());
-} catch (IOException | ClassNotFoundException e) {
-    System.out.println("Error al leer el archivo: " + e.getMessage());
-}
-
+			    
 		break;
 
 	    case 5:
@@ -142,7 +133,7 @@ public class Main {
 	break;
 		    
                 default:
-                    System.out.println("Opción inválida. Inténtalo de nuevo.");
+                    System.out.println("Opción inválida. Regresaras al menu. Por favor selecciona una opcion valida.");
             }
         }
     }
