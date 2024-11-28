@@ -90,11 +90,11 @@ public class Main {
                                 if (jugadores[i].obtenerNombre().equals(nombreConecta1)){
 				    jugadorConecta1 = jugadores[i];
 				    encontrado1 = true;
-				    if (jugadorConecta1.obtenerSaldo() >= 15){
+				    if (jugadorConecta1.obtenerSaldo() > 15){
 					recursos1 = true;                                                                                                               
                                             System.out.println("Jugador 1 encontrado");                                                                                        
                                     } else {                                                                                                                  
-                                System.out.println("Jugador encontrado,pero el jugador 1 no tiene saldo suficiente");                                                                               
+                                System.out.println("Pero, el jugador 1 no tiene saldo suficiente");                                                                               
                             }                                                                                                                                                   
                                           } else {                                                                                                                                  
                                 }                                               
@@ -110,7 +110,7 @@ public class Main {
                                             System.out.println("Jugador 2 encontrado");
 
                                     } else {
-                                System.out.println("Jugador encontrado, pero el jugador 2 no tiene saldo suficiente");
+                                System.out.println("Pero, el jugador 2 no tiene saldo suficiente");
                             }
                                           } else {
                                 }
@@ -150,34 +150,19 @@ public class Main {
 				boolean juegoTerminado = false;
 
 				do {
-				    
-				    boolean columnaInvalida = false;
+
 				    boolean colocar = false;
 				    boolean incorrecto = false;
-
-				    do{
-					int columna1;
 				    do {
-					System.out.println("Jugador 1 \"X\" (" + jugadorConecta1.obtenerNombre() + ") ingresa el numero de la columna en la que colocaras una ficha");
-					columna1 = in.nextInt();
+					System.out.println("Jugador 1 \"X\" (" + jugadorConecta1.obtenerNombre() + ") ingresa la columna en la que colocaras una ficha");
+					int columna1 = in.nextInt();
 					
-					try {
-					    colocar = conectaCuatro.estaOcupada(0,columna1);
-					    columnaInvalida = false;
-					    
-					} catch (columnaInvalida e){
-                                            System.out.println(e.getMessage() + " Por favor ingresa una columna valida");
-                                            columnaInvalida = true;
-                                        }
-					
-				    } while (columnaInvalida == true);
+					colocar = conectaCuatro.estaOcupada(columna1,0);
 					
 					if (colocar == true) { System.out.println("La fila esta ocupada, por favor ingresa otra fila \n");
 					    incorrecto = true;
 					    
 					}  else {
-
-					    incorrecto = false;
 
 		                            try{
 						conectaCuatro.colocarFigura(columna1,'X');
@@ -192,12 +177,12 @@ public class Main {
  					}
 					}
 
-				} while (incorrecto == true);
+				    } while (incorrecto == true); //seleccion incorrecta
 
 				    boolean ganador = conectaCuatro.haGanado();
 
 				    if (ganador == true){
-					System.out.println("EL JUGADOR 1 \"X\" (" + jugadorConecta1.obtenerNombre() + ") HA GANADO LA PARTIDA. FELICIDADES");
+					System.out.println("EL JUGADOR 1 \"X\" (" + jugadorConecta1.obtenerNombre() + "HA GANADO LA PARTIDA. FELICIDADES");
 					break;
 				    }
 
@@ -208,65 +193,7 @@ public class Main {
 					break;
 				    }
 
-				    //////////////////////////////////
-
-				    boolean colocar2 = false;
-                                    boolean incorrecto2 = false;
-				    boolean columnaInvalida2 = false;
 				    
-				     do{
-                                        int columna2;
-                                    do {
-                                        System.out.println("Jugador 2 \"O\" (" + jugadorConecta2.obtenerNombre() + ") ingresa el numero de la columna en la que colocaras una ficha");
-                                        columna2 = in.nextInt();
-
-                                        try {
-                                            colocar2 = conectaCuatro.estaOcupada(0,columna2);
-					    columnaInvalida2 = false;
-					    
-                                        } catch (columnaInvalida e){
-                                            System.out.println(e.getMessage() + " Por favor ingresa una columna valida");
-                                            columnaInvalida2 = true;
-                                        }
-
-                                    } while (columnaInvalida2 == true);
-
-				    
-                                        if (colocar2 == true) { System.out.println("La fila esta ocupada, por favor ingresa otra fila \n");
-                                            incorrecto2 = true;
-
-                                        }  else {
-
-					    incorrecto2 = false;
-
-                                            try{
-                                                conectaCuatro.colocarFigura(columna2,'O');
-
-                                            System.out.println(conectaCuatro.toString());
-
-                                            juegoTerminado = false;
-
-                                        } catch (columnaInvalida e){
-                                            System.out.println(e.getMessage());
-                                            incorrecto2 = true;
-                                        }
-                                        }
-
-                                    } while (incorrecto2 == true);
-
-                                    boolean ganador2 = conectaCuatro.haGanado();
-
-                                    if (ganador2 == true){
-                                        System.out.println("EL JUGADOR 2 \"O\" (" + jugadorConecta2.obtenerNombre() + ") HA GANADO LA PARTIDA. FELICIDADES");
-                                        break;
-                                    }
-
-                                    boolean lleno2 = conectaCuatro.tableroLleno();
-
-                                    if (lleno2 == true){
-                                        System.out.println("EL TABLERO SE HA LLENADO, POR LO QUE EL JUEGO TERMINO. FELICIDADES, ES UN EMPATE");
-                                        break;
-                                    }
 
 				} while (juegoTerminado == false); //Repeticion del juego
 			    
@@ -301,7 +228,7 @@ public class Main {
 					     System.out.println("Jugador encontrado");
 					    
                                     } else {
-                                System.out.println("Jugador encontrado, pero el jugador no tiene saldo suficiente");
+                                System.out.println("Pero, el jugador no tiene saldo suficiente");
                             }
 				} else {
 				}

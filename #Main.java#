@@ -90,11 +90,11 @@ public class Main {
                                 if (jugadores[i].obtenerNombre().equals(nombreConecta1)){
 				    jugadorConecta1 = jugadores[i];
 				    encontrado1 = true;
-				    if (jugadorConecta1.obtenerSaldo() >= 15){
+				    if (jugadorConecta1.obtenerSaldo() > 15){
 					recursos1 = true;                                                                                                               
                                             System.out.println("Jugador 1 encontrado");                                                                                        
                                     } else {                                                                                                                  
-                                System.out.println("Jugador encontrado,pero el jugador 1 no tiene saldo suficiente");                                                                               
+                                System.out.println("Pero, el jugador 1 no tiene saldo suficiente");                                                                               
                             }                                                                                                                                                   
                                           } else {                                                                                                                                  
                                 }                                               
@@ -110,7 +110,7 @@ public class Main {
                                             System.out.println("Jugador 2 encontrado");
 
                                     } else {
-                                System.out.println("Jugador encontrado, pero el jugador 2 no tiene saldo suficiente");
+                                System.out.println("Pero, el jugador 2 no tiene saldo suficiente");
                             }
                                           } else {
                                 }
@@ -301,7 +301,7 @@ public class Main {
 					     System.out.println("Jugador encontrado");
 					    
                                     } else {
-                                System.out.println("Jugador encontrado, pero el jugador no tiene saldo suficiente");
+                                System.out.println("Pero, el jugador no tiene saldo suficiente");
                             }
 				} else {
 				}
@@ -309,11 +309,14 @@ public class Main {
 
 			    if (encontrado == true && recursos == true){
 				System.out.println("Se han descontado 15 de tu saldo. Bienvenido; el juego comenzara... \n");
-
+				////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				// DESARROLLO DEL JUEGO
 				// ASIGNACION DE PUNTOS
 				// MOSTRAR POSICION ACTUAL
 				// CONOCER TRES PRIMEROS CONCURSANTES VICTORIOSOS
+
+
+				/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			    } else {
 				System.out.println(" \n //\\//\\ Regresaras al menu principal. Ingresa el nombre con el que te registraste para asegurar que seas encontrado, o registrate como nuevo jugador antes de jugar. Considera tu saldo disponible antes de jugar \n Nota: Considera mayusculas, minusculas, espacios y acentos. \n");
 			    }

@@ -51,12 +51,18 @@ public class ConectaCuatro{
      *
      */
 
-    public boolean estaOcupada(int fila, int columna){
+    public boolean estaOcupada(int fila, int columna) throws columnaInvalida{
+
+	if (columna >= 0 && columna<=6){
+	    
 	if (tablero[fila][columna] != ' '){
 	    return true;
 	} else {
 	    return false;
 	}
+    } else {
+            throw new columnaInvalida(". Solo puedes seleccionar columnas de 0 a 1");
+    } 
     }
 
     /**
@@ -64,7 +70,10 @@ public class ConectaCuatro{
      *
      */
 
-    public void colocarFigura(int columna, char simbolo){
+    public void colocarFigura(int columna, char simbolo) throws columnaInvalida{
+
+	if (columna >= 0 && columna<=6){
+	    
 	    if (this.estaOcupada(5,columna) == false){
     	    tablero[5][columna] = simbolo;
     	} else
@@ -90,7 +99,11 @@ public class ConectaCuatro{
     			      }
     		     }
     	    }
+	} else {
+	    throw new columnaInvalida(". Solo puedes seleccionar columnas de 0 a 1");
     }
+    }
+    
 
 
     /**
@@ -98,44 +111,30 @@ public class ConectaCuatro{
      *
      */
  
-    boolean horizontal;
       public boolean verificacionHorizontal(){
           for (int i=0; i<=5; i++){
     	    for (int j=0; j<=3; j++){
-    		if ((tablero[i][j] == tablero[i][j+1]) && (tablero [i][j] == tablero[i][j+2]) && (tablero [i][j] == tablero[i][j+3])){
-		    horizontal = true;
-		} else
-		    { horizontal = false;
-		    }
+    		if ((tablero[i][j] != ' ') && (tablero[i][j] == tablero[i][j+1]) && (tablero [i][j] == tablero[i][j+2]) && (tablero [i][j] == tablero[i][j+3])){
+		    return true;
 	    }
-	}
-
-	  if (horizontal == true) {
-	      return true;
-	  } else
-	      return false;
+	  }
       }
+    return false;
+}
 
     /**
      * Metodo que verifica si se han conectado 4 fichas con simbolos iguales verticalmente
      *
      */
     
-        boolean vertical;
       public boolean verificacionVertical(){
           for (int i=0; i<=6; i++){
             for (int j=0; j<=2; j++){
-                if ((tablero[j][i] == tablero[j+1][i]) && (tablero [j][i] == tablero[j+2][i]) && (tablero [j][i] == tablero[j+3][i])){
-                    vertical = true;
-                } else
-                    { vertical = false;
-                    }
-            }
-        }
-
-          if (vertical == true) {
-              return true;
-          } else
+                if ((tablero[j][i] != ' ') && (tablero[j][i] == tablero[j+1][i]) && (tablero [j][i] == tablero[j+2][i]) && (tablero [j][i] == tablero[j+3][i])){
+                    return true;
+                }
+	    }
+	  }
               return false;
       }
 
@@ -146,18 +145,18 @@ public class ConectaCuatro{
 
     public boolean verificacionDiagonal135(){
 	if  (
-	     ((tablero[2][0] == tablero[3][1]) && (tablero[2][0] == tablero[4][2]) && (tablero [2][0] == tablero[5][3])) ||
-	     ((tablero[1][0] == tablero[2][1]) && (tablero[1][0] == tablero[3][2]) && (tablero [2][0] == tablero[4][3])) ||
-	     ((tablero[2][1] == tablero[3][2]) && (tablero[2][1] == tablero[4][3]) && (tablero [2][1] == tablero[5][4])) ||
-	     ((tablero[0][0] == tablero[1][1]) && (tablero[0][0] == tablero[2][2]) && (tablero [0][0] == tablero[3][3])) ||
-	     ((tablero[1][1] == tablero[2][2]) && (tablero[1][1] == tablero[3][3]) && (tablero [1][1] == tablero[4][4])) ||
-	     ((tablero[2][2] == tablero[3][3]) && (tablero[2][2] == tablero[4][4]) && (tablero [2][2] == tablero[5][5])) ||
-	     ((tablero[0][1] == tablero[1][2]) && (tablero[0][1] == tablero[2][3]) && (tablero [0][1] == tablero[3][4])) ||
-	     ((tablero[1][2] == tablero[2][3]) && (tablero[1][2] == tablero[3][4]) && (tablero [1][2] == tablero[4][5])) ||
-	     ((tablero[2][3] == tablero[3][4]) && (tablero[2][3] == tablero[4][5]) && (tablero [2][3] == tablero[5][6])) ||
-	     ((tablero[0][2] == tablero[1][3]) && (tablero[0][2] == tablero[2][4]) && (tablero [0][2] == tablero[3][5])) ||
-	     ((tablero[1][3] == tablero[2][4]) && (tablero[1][3] == tablero[3][5]) && (tablero [1][3] == tablero[4][6])) ||
-	     ((tablero[0][3] == tablero[1][4]) && (tablero[0][3] == tablero[2][5]) && (tablero [0][3] == tablero[3][6]))
+	     ((tablero[2][0] != ' ') && (tablero[2][0] == tablero[3][1]) && (tablero[2][0] == tablero[4][2]) && (tablero [2][0] == tablero[5][3])) ||
+	     ((tablero[1][0] != ' ') && (tablero[1][0] == tablero[2][1]) && (tablero[1][0] == tablero[3][2]) && (tablero [2][0] == tablero[4][3])) ||
+	     ((tablero[2][1] != ' ') && (tablero[2][1] == tablero[3][2]) && (tablero[2][1] == tablero[4][3]) && (tablero [2][1] == tablero[5][4])) ||
+	     ((tablero[0][0] != ' ') && (tablero[0][0] == tablero[1][1]) && (tablero[0][0] == tablero[2][2]) && (tablero [0][0] == tablero[3][3])) ||
+	     ((tablero[1][1] != ' ') && (tablero[1][1] == tablero[2][2]) && (tablero[1][1] == tablero[3][3]) && (tablero [1][1] == tablero[4][4])) ||
+	     ((tablero[2][2] != ' ') && (tablero[2][2] == tablero[3][3]) && (tablero[2][2] == tablero[4][4]) && (tablero [2][2] == tablero[5][5])) ||
+	     ((tablero[0][1] != ' ') && (tablero[0][1] == tablero[1][2]) && (tablero[0][1] == tablero[2][3]) && (tablero [0][1] == tablero[3][4])) ||
+	     ((tablero[1][2] != ' ') && (tablero[1][2] == tablero[2][3]) && (tablero[1][2] == tablero[3][4]) && (tablero [1][2] == tablero[4][5])) ||
+	     ((tablero[2][3] != ' ') && (tablero[2][3] == tablero[3][4]) && (tablero[2][3] == tablero[4][5]) && (tablero [2][3] == tablero[5][6])) ||
+	     ((tablero[0][2] != ' ') && (tablero[0][2] == tablero[1][3]) && (tablero[0][2] == tablero[2][4]) && (tablero [0][2] == tablero[3][5])) ||
+	     ((tablero[1][3] != ' ') && (tablero[1][3] == tablero[2][4]) && (tablero[1][3] == tablero[3][5]) && (tablero [1][3] == tablero[4][6])) ||
+	     ((tablero[0][3] != ' ') && (tablero[0][3] == tablero[1][4]) && (tablero[0][3] == tablero[2][5]) && (tablero [0][3] == tablero[3][6]))
 	     ){
 
 	    return true;
@@ -174,18 +173,18 @@ public class ConectaCuatro{
 
         public boolean verificacionDiagonal45(){                                                                                                                                                       
         if  (                                                                                                                                                                                   
-             ((tablero[0][3] == tablero[1][2]) && (tablero[0][3] == tablero[2][1]) && (tablero [0][3] == tablero[3][0])) ||       
-             ((tablero[0][4] == tablero[1][3]) && (tablero[0][4] == tablero[2][2]) && (tablero [0][4] == tablero[3][1])) ||   
-             ((tablero[1][3] == tablero[2][2]) && (tablero[1][3] == tablero[3][1]) && (tablero [1][3] == tablero[4][0])) ||  
-             ((tablero[0][5] == tablero[1][4]) && (tablero[0][5] == tablero[2][3]) && (tablero [0][5] == tablero[3][2])) ||  
-             ((tablero[1][4] == tablero[2][3]) && (tablero[1][4] == tablero[3][2]) && (tablero [1][4] == tablero[4][1])) ||  
-             ((tablero[2][3] == tablero[3][2]) && (tablero[2][3] == tablero[4][1]) && (tablero [2][3] == tablero[5][0])) ||     
-             ((tablero[0][6] == tablero[1][5]) && (tablero[0][6] == tablero[2][4]) && (tablero [0][6] == tablero[3][3])) ||   
-             ((tablero[1][5] == tablero[2][4]) && (tablero[1][5] == tablero[3][3]) && (tablero [1][5] == tablero[4][2])) ||        
-             ((tablero[2][4] == tablero[3][3]) && (tablero[2][4] == tablero[4][2]) && (tablero [2][4] == tablero[5][1])) ||     
-             ((tablero[1][6] == tablero[2][5]) && (tablero[1][6] == tablero[3][4]) && (tablero [1][6] == tablero[4][3])) ||     
-             ((tablero[2][5] == tablero[3][4]) && (tablero[2][5] == tablero[4][3]) && (tablero [2][5] == tablero[5][2])) ||                
-             ((tablero[2][6] == tablero[3][5]) && (tablero[2][6] == tablero[4][4]) && (tablero [2][6] == tablero[5][3])) 
+             ((tablero[0][3] != ' ') && (tablero[0][3] == tablero[1][2]) && (tablero[0][3] == tablero[2][1]) && (tablero [0][3] == tablero[3][0])) ||       
+             ((tablero[0][3] != ' ') && (tablero[0][4] == tablero[1][3]) && (tablero[0][4] == tablero[2][2]) && (tablero [0][4] == tablero[3][1])) ||   
+             ((tablero[1][3] != ' ') && (tablero[1][3] == tablero[2][2]) && (tablero[1][3] == tablero[3][1]) && (tablero [1][3] == tablero[4][0])) ||  
+             ((tablero[0][5] != ' ') && (tablero[0][5] == tablero[1][4]) && (tablero[0][5] == tablero[2][3]) && (tablero [0][5] == tablero[3][2])) ||  
+             ((tablero[1][4] != ' ') && (tablero[1][4] == tablero[2][3]) && (tablero[1][4] == tablero[3][2]) && (tablero [1][4] == tablero[4][1])) ||  
+             ((tablero[2][3] != ' ') && (tablero[2][3] == tablero[3][2]) && (tablero[2][3] == tablero[4][1]) && (tablero [2][3] == tablero[5][0])) ||     
+             ((tablero[0][6] != ' ') && (tablero[0][6] == tablero[1][5]) && (tablero[0][6] == tablero[2][4]) && (tablero [0][6] == tablero[3][3])) ||   
+             ((tablero[1][5] != ' ') && (tablero[1][5] == tablero[2][4]) && (tablero[1][5] == tablero[3][3]) && (tablero [1][5] == tablero[4][2])) ||        
+             ((tablero[2][4] != ' ') && (tablero[2][4] == tablero[3][3]) && (tablero[2][4] == tablero[4][2]) && (tablero [2][4] == tablero[5][1])) ||     
+             ((tablero[1][6] != ' ') && (tablero[1][6] == tablero[2][5]) && (tablero[1][6] == tablero[3][4]) && (tablero [1][6] == tablero[4][3])) ||     
+             ((tablero[2][5] != ' ') && (tablero[2][5] == tablero[3][4]) && (tablero[2][5] == tablero[4][3]) && (tablero [2][5] == tablero[5][2])) ||                
+             ((tablero[2][6] != ' ') && (tablero[2][6] == tablero[3][5]) && (tablero[2][6] == tablero[4][4]) && (tablero [2][6] == tablero[5][3])) 
              ){                                                                                                                                                                               
                             
             return true;                                   
@@ -234,18 +233,4 @@ public class ConectaCuatro{
 	    return false;
 	}
     }
-    
-    
-public static void main (String [] args){
-    ConectaCuatro prueba = new ConectaCuatro();
-    String muestra =prueba.toString();
-    System.out.println(muestra);
-
-    prueba.colocarFigura(3,'X');
-    System.out.println(prueba.toString());
-
-    prueba.colocarFigura(3,'O');
-    System.out.println(prueba.toString());
-
-}
 }
