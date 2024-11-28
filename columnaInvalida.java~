@@ -1,5 +1,0 @@
-public class columnaInvalida extends Exception {
-    public Excepcion(String mensaje) {
-        super("Seleccion de columna invalida");
-    }
-}
